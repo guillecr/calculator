@@ -1,0 +1,136 @@
+<!doctype html>
+<HTML lang=es>
+    <HEAD>
+        <TITLE>Calculadora</TITLE>
+        <META charset="UTF-8">
+        <META keywords="calculadora">
+        <META description="">
+        <META author="Guillermo Casas">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <style>
+            .container{
+                width: 320px;
+                margin-top: 20px;
+                padding: 9px;
+                background-color: rgb(224, 224, 224);
+                border-radius: 15px;
+                border: 1px solid rgb(165, 165, 165);
+            }
+            #panel{
+                /* Colocación */
+                height: 90px;
+                margin: 3%;
+
+                /* Colocacion interior */
+                padding: 10px;
+
+                /* Apariencia */
+                background-color: white;
+                border:1px solid rgb(168, 168, 168);
+                box-shadow: 2px 2px 5px 2px rgb(141, 141, 141);
+                border-radius: 8px;
+            }
+            #panel_m{
+                height: 10px;
+                font-size: xx-small;
+            }
+            #panel_s{
+                height: 30px;
+                font-size: small;
+                display: flex;
+                align-items: flex-start;
+                justify-content:flex-end;
+            }
+            #panel_i{
+                height: 30px;
+                display: flex;
+                align-items: flex-end;
+                justify-content:flex-end;
+            }
+            .row{
+                /* Necesario para que respete el padding del contenedor*/
+                margin-left: 0;
+                margin-right: 0;
+            }
+            /*
+            button{
+                border: 0px; /* Estilo mas minimalista 
+            }
+            */
+            #tecla{
+                /* Tamaño, separación y disposición */
+                height: 57px;
+                margin:3%;
+                float: left;
+
+                /* Disposicion interno */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                /* Apariencia */
+                background-color: white;
+                box-shadow: 2px 2px 5px 2px rgb(141, 141, 141);
+                border-radius: 8px;
+            }
+            
+            #tecla:hover{
+                background-color: rgb(240, 239, 239); /* Color al pasar el ratón */
+            }
+
+            /* Propiedades al pulsarse */
+            #tecla:active{
+                box-shadow: 2px 2px 5px 0px rgb(141, 141, 141);
+                transform: translateY(2px);
+                transform: translateX(2px);
+            }
+            button:focus{
+                outline: 0px; /* Quitar el border azul de seleccionado (por boostrap) */
+            }
+        </style>
+    </HEAD>
+    <BODY>
+        <div class='container'>
+            <div class='row'>
+                <div class='col' id='panel' name='panel'>
+                    <div id='panel_m' name='panel_m'></div>
+                    <div id='panel_s' name='panel-s'></div>
+                    <div id='panel_i' name='panel-i'></div>
+                </div>
+                
+            </div>
+            <div class='row'>
+                <a class='col' id='tecla' name='teclas' aria-pressed="true">1</a>
+                <a class='col' id='tecla' name='teclas'>2</a>
+                <a class='col' id='tecla' name='teclas'>3</a>
+                <a class='col' id='tecla' name='teclas'>+</a>
+            </div>
+            <div class='row'>
+                <a class='col' id='tecla' name='teclas'>4</a>
+                <a class='col' id='tecla' name='teclas'>5</a>
+                <a class='col' id='tecla' name='teclas'>6</a>
+                <a class='col' id='tecla' name='teclas'>-</a>
+            </div>
+            <div class='row'>
+                <a class='col' id='tecla' name='teclas'>7</a>
+                <a class='col' id='tecla' name='teclas'>8</a>
+                <a class='col' id='tecla' name='teclas'>9</a>
+                <a class='col' id='tecla' name='teclas'>*</a>
+            </div>
+            <div class='row'>
+                <a class='col' id='tecla' name='teclas'>.</a>
+                <a class='col' id='tecla' name='teclas'>0</a>
+                <a class='col' id='tecla' name='teclas'>,</a>
+                <a class='col' id='tecla' name='teclas'>/</a>
+            </div>
+            <div class='row'>
+                <a class='col' id='tecla' name='teclas'>M+</a>
+                <a class='col' id='tecla' name='teclas'>M-</a>
+                <a class='col' id='tecla' name='teclas'>MR</a>
+                <a class='col' id='tecla' name='teclas'>C</a>
+            </div>
+        </div>
+        <script src='srcipts/class.js'></script>
+        <script src='srcipts/functions.js'></script>
+    </BODY>
+</HTML>
