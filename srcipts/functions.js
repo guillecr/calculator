@@ -4,7 +4,7 @@
 var panelSup = document.getElementById('panel_s');
 var panelInf = document.getElementById('panel_i');
 var panelMemo = document.getElementById('panel_m');
-var numS = ['0','1','2','3','4','5','6','7','8','9']; // teclas validas
+var numS = ['0','1','2','3','4','5','6','7','8','9',',']; // teclas validas
 var operS = ['+','-','/','*'];
 var calcu;
 var clear = false;
@@ -59,6 +59,18 @@ function printMemoryIcon(){
     writePanel("",false,2);
   }
 }
+/**
+ * Funcion para comprobar si el valor entregado es un numero
+ * Se discrimina el infinito
+ * @param {*} num Valor a comprobar
+ */
+function isNumber(num){
+  if(num == Infinity){return false;}
+  for(var i=0; i<num.length;i++){
+    if(numS.indexOf(num.substr(i,i+1))<0){return false;}
+  }
+  return true;
+}
 
 
 // ======================================================================
@@ -66,7 +78,7 @@ function printMemoryIcon(){
 // ======================================================================
 /**
  * Funcion que ejecutara la funcion asociada a cada tecla
- * @param {*} tecla Tecla pulsada
+ * @param {String} tecla Tecla pulsada
  */
 function readTc(tecla){
   console.log("Tecla pulsada: "+tecla);
@@ -75,6 +87,7 @@ function readTc(tecla){
   *  Considero que si se usa una funcion de memoria no deberia de borrarse la pantalla
   *  Si se hace uso de las funciones de memoria no llegara a ejecutarse el limpiado de pantalla
   */
+
   if(tecla == "MR"){
     calcu.addLine(calcu.getMemory());
     writePanel(calcu.getLine());
@@ -106,10 +119,11 @@ function readTc(tecla){
     calcu.addLine(ln);
     writePanel(calcu.getLine());
   }
-  else if(tecla == 'Enter'){
+  else if(tecla == 'Enter' || tecla == '='){
     result = calcu.resultCalcu();
     calcu.delete();
     writePanel(result,false,1);
+    if(!isNumber(result)){result = 0;}
     clear = true;
   }
   else if(tecla == 'C' || tecla == 'Delete'){
@@ -121,6 +135,7 @@ function readTc(tecla){
     calcu.back();
     writePanel(calcu.getLine(),false);
   }
+  console.log("");
 }
 
 //===================================================================

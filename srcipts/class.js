@@ -24,19 +24,25 @@ function Calculator(){
 
     // Metodo de calculo
     this.resultCalcu = function(){
-        this.result = eval(this.line);
-        console.log("Linea: "+this.line+" = "+this.result);
-        return this.result;
+        var result;
+        try{
+            result = eval(this.getLine());
+            console.log("Linea: "+this.getLine()+" = "+result);
+        }
+        catch (EvalError){
+            result = "Syntax ERROR";
+        }
+        return result;
     }
 
     // Metodo de reseteo
     this.delete = function(){
-        this.line="";
+        this.setLine("");
     }
 
     // Metodo de borrado
     this.back = function(){
-        this.line = this.line.slice(0,this.line.length-1);
+        this.setLine(this.getLine().slice(0,this.getLine().length-1));
     }
 
     // Metodos de memoria
@@ -45,7 +51,7 @@ function Calculator(){
         console.log("Memoria: "+this.getMemory());
     }
     this.restMemory = function(n){
-        this.setMemory(Number(n)-this.getMemory());
+        this.setMemory(this.getMemory()-Number(n));
         console.log("Memoria: "+this.getMemory());
     }
 }
