@@ -1,19 +1,20 @@
 /**
  * Clase Calculadora
+ * @author Guillermo Casas Reche
+ * @author guillermo.casas@campusfp.es
+ * @version 1.0
  */
 function Calculator(){
+    // ATRIBUTOS
     this.line="";
     this.memory = 0;
     
-    // Metodos getter y setter
+    // METODOS GETTER Y SETTER
     this.setLine = function(n){
        this.line = n;
     }
     this.getLine = function(){
        return this.line;
-    }
-    this.addLine = function(add){
-        this.line += add;
     }
     this.setMemory = function (m){
         this.memory = Number(m);
@@ -22,7 +23,21 @@ function Calculator(){
         return this.memory;
     }
 
-    // Metodo de calculo
+// =======================================================
+// ================ METODOS PROPIOS ======================
+// =======================================================
+    /**
+     * Funcion para añadir un nuevo caracter a la linea de operacion (obj.line)
+     */
+    this.addLine = function(add){
+        this.line += add;
+    }
+
+    /**
+     * Metodo para calcular el resultado de la linea de operacion (obj.line)
+     * Si se produce algun error en el calculo, devolvera un String con un mensaje de error
+     * @returns {*} Resultado del calculo
+     */
     this.resultCalcu = function(){
         var result;
         try{
@@ -35,21 +50,35 @@ function Calculator(){
         return result;
     }
 
-    // Metodo de reseteo
+    /**
+     * Metodo para limpiar la linea de operación (line)
+     */
     this.delete = function(){
         this.setLine("");
     }
 
-    // Metodo de borrado
-    this.back = function(){
-        this.setLine(this.getLine().slice(0,this.getLine().length-1));
+    /**
+     * Metodo para eliminar n caracteres de la linea de operacion (derecha a izquierda)
+     * @param {number} n Numero de caracteres a eliminar (por defecto 1)
+     */
+    this.back = function(n=1){
+        this.setLine(this.getLine().slice(0,this.getLine().length-n));
     }
 
-    // Metodos de memoria
+    // METODOS DE MEMORIA
+    /**
+     * Metodo para sumar un numero al valor de memoria (obj.memory)
+     * @param {number} n Numero a sumar
+     */
     this.sumMemory = function(n){
         this.setMemory(Number(n)+this.getMemory());
         console.log("Memoria: "+this.getMemory());
     }
+    /**
+     * Metodo para restar un numero al valor de memoria (obj.memory)
+     * memory - resta
+     * @param {number} n Numero a restar
+     */
     this.restMemory = function(n){
         this.setMemory(this.getMemory()-Number(n));
         console.log("Memoria: "+this.getMemory());
