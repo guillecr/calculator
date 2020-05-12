@@ -2,13 +2,28 @@
 <HTML lang=es>
     <HEAD>
         <TITLE>Calculadora</TITLE>
+        <link rel="shortcut icon" href="icono.ico" type="image/icon">
         <META charset="UTF-8">
         <META keywords="calculadora">
-        <META description="">
+        <META description="Ejercicio de calculadora en JavaScript">
         <META author="Guillermo Casas">
+        <META author="guillermo.casas@campusfp.es">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <style>
+            #manual{
+                float: left;
+                margin-top:5px;
+                margin-left: 6%;
+                margin-right: 20px;
+                padding-left: 2%;
+                padding-right: 15px;
+                width:30%;
+                font-size: 12px;
+                border-right:1px black solid;
+                border-radius: 1%;            
+            }
             .container{
+                float: left;
                 width: 320px;
                 margin-top: 20px;
                 padding: 9px;
@@ -52,11 +67,9 @@
                 margin-left: 0;
                 margin-right: 0;
             }
-            /*
-            button{
+            /*button{
                 border: 0px; /* Estilo mas minimalista 
-            }
-            */
+            }*/
             #tecla{
                 /* Tamaño, separación y disposición */
                 height: 57px;
@@ -87,20 +100,54 @@
             button:focus{
                 outline: 0px; /* Quitar el border azul de seleccionado (por boostrap) */
             }
+            kb{
+                font-style: italic;
+            }
+
         </style>
     </HEAD>
     <BODY>
+        <div id='manual'>
+            <h1>Calculadora Básica</h1>
+            <details>
+                <summary>Guia rapida</summary>
+                <p>Calculadora basada en el funcionamiento de una calculadora básica:</p>
+                <ul>
+                    <li>La escritura es posible tanto por los botones en pantalla como por el teclado</li>
+                    <li>Boton <b>C</b> o de la tecla <kb>supr</kb> para borrar la pantalla y memoria (no borra el ultimo resultado</li>
+                    <li><kb>Backspace</kb> para borrar carácter a carácter</li>
+                    <li>Pulsa el botón <b>=</b> o la tecla <kb>Enter</kb> para calcular el resultado de la línea de operación</li>
+                    <li>Funciones memoria:
+                        <dl style="padding-left:3%;">
+                            <dt>M+</dt>
+                            <dd>Sumará el ultimo resultado obtenido a la memoria existente</dd>
+                            <dt>M-</dt>
+                            <dd>Restará el ultimo resultado obtenido a la memoria existente</dd>
+                            <dt>MR</dt>
+                            <dd>MR escribirá el valor de la memoria en la línea de operación</dd>
+                        </dl>
+                    </li>
+                    <li>Recuperación del ultimo resultado:
+                        <dl style="padding-left:3%;">
+                            <dt>En línea de operación</dt>
+                            <dd>Escribir un operador con la línea de operación vacía</dd>
+                            <dt>En la línea de resultado</dt>
+                            <dd>Forzando a recalcular ( <b>=</b> o <kb>Enter</kb> )</dd>
+                        </dl>
+                    </li>
+                </ul>
+            </details>
+        </div>
         <div class='container'>
             <div class='row'>
                 <div class='col' id='panel' name='panel'>
                     <div id='panel_m' name='panel_m'></div>
                     <div id='panel_s' name='panel-s'></div>
-                    <div id='panel_i' name='panel-i'></div>
+                    <div id='panel_i' name='panel-i'>Hola ;)</div>
                 </div>
-                
             </div>
             <div class='row'>
-                <a class='col' id='tecla' name='teclas' aria-pressed="true">1</a>
+                <a class='col' id='tecla' name='teclas'>1</a>
                 <a class='col' id='tecla' name='teclas'>2</a>
                 <a class='col' id='tecla' name='teclas'>3</a>
                 <a class='col' id='tecla' name='teclas'>+</a>
@@ -120,7 +167,7 @@
             <div class='row'>
                 <a class='col' id='tecla' name='teclas'>=</a>
                 <a class='col' id='tecla' name='teclas'>0</a>
-                <a class='col' id='tecla' name='teclas'>,</a>
+                <a class='col' id='tecla' name='teclas'>.</a>
                 <a class='col' id='tecla' name='teclas'>/</a>
             </div>
             <div class='row'>
